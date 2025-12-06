@@ -124,7 +124,8 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 	// Card container (match your existing card styling)
 	const card = root
 		.append("div")
-		.attr("class", "bg-background card p-4 shadow rounded")
+		.attr("class", "card p-4 shadow rounded")
+		.style("background", "#F3F1FA")
 		.style("width", "600px")
 		.style("max-width", "100%");
 

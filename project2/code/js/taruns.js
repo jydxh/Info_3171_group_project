@@ -139,17 +139,14 @@ const tarunFormatNum = d3.format(",");
 			const tooltip = container
 				.append("div")
 				.attr("class", "tooltip")
-				.style("position", "absolute")
 				.style("opacity", 0)
 				.style("pointer-events", "none")
-				.style("padding", "8px 16px")
-				.style("border-radius", "8px")
-				.style("line-height", "18px")
-				.style("background", "#b35fa8")
-				.style("color", "#F3F1FA")
 				.style("font-family", "'Merriweather', serif")
-				.style("font-size", "12px")
 				.style("font-weight", "400")
+				.style("font-size", "12px")
+				.style("line-height", "18px")
+				.style("background", "#B35FA8")
+				.style("color", "#F3F1FA")
 				.style("border-radius", "8px")
 				.style("box-shadow", "2px 2px 6px rgba(0,0,0,0.3)");
 
@@ -211,9 +208,9 @@ const tarunFormatNum = d3.format(",");
 
 	container.selectAll("*").remove();
 
-	const width = 600;
-	const height = 400;
-	const margin = { top: 60, right: 20, bottom: 60, left: 80 };
+	const width = 590;
+	const height = 500;
+	const margin = { top: 60, right: 40, bottom: 60, left: 80 };
 	const innerWidth = width - margin.left - margin.right;
 	const innerHeight = height - margin.top - margin.bottom;
 
@@ -319,7 +316,7 @@ const tarunFormatNum = d3.format(",");
 			// Axis labels
 			g.append("text")
 				.attr("x", innerWidth / 2)
-				.attr("y", innerHeight + 60)
+				.attr("y", innerHeight + 50)
 				.attr("text-anchor", "middle")
 				.style("font-family", "'Merriweather', serif")
 				.style("font-size", "16px")
@@ -370,17 +367,14 @@ const tarunFormatNum = d3.format(",");
 			const tooltip = container
 				.append("div")
 				.attr("class", "tooltip")
-				.style("position", "absolute")
 				.style("opacity", 0)
 				.style("pointer-events", "none")
-				.style("padding", "8px 16px")
-				.style("border-radius", "8px")
-				.style("line-height", "18px")
-				.style("background", "#b35fa8")
-				.style("color", "#F3F1FA")
 				.style("font-family", "'Merriweather', serif")
-				.style("font-size", "12px")
 				.style("font-weight", "400")
+				.style("font-size", "12px")
+				.style("line-height", "18px")
+				.style("background", "#B35FA8")
+				.style("color", "#F3F1FA")
 				.style("border-radius", "8px")
 				.style("box-shadow", "2px 2px 6px rgba(0,0,0,0.3)");
 
@@ -434,7 +428,7 @@ const tarunFormatNum = d3.format(",");
 				.style("cursor", "pointer")
 				.on("mouseover", function (event, d) {
 					d3.select(this).attr("opacity", 1);
-
+					const [mx, my] = d3.pointer(event, container.node());
 					tooltip
 						.style("opacity", 0.95)
 						.html(
@@ -444,8 +438,8 @@ const tarunFormatNum = d3.format(",");
 							<span>Views: ${tarunFormatNum(d.value)}</span>
 						</div>`
 						)
-						.style("left", event.pageX + 10 + "px")
-						.style("top", event.pageY - 28 + "px");
+						.style("left", mx + 10 + "px")
+						.style("top", my + 28 + "px");
 				})
 				.on("mouseout", function () {
 					d3.select(this).attr("opacity", 0);
