@@ -10,3 +10,17 @@ body {
 .marySvgContainer {
 	background-color: #f3f1fa;
 }
+
+/* #tooltip1,
+#tooltip7 {
+	position: absolute;
+	padding: 6px 10px;
+	background: #f3f1fa;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	pointer-events: none;
+	opacity: 0;
+	font-size: 12px;
+	z-index: 9999;
+	color: #8d1179;
+} */

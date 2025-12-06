@@ -137,7 +137,7 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 	const titleEl = titleWrap
 		.append("h3")
 		.attr("class", "text-primary mb-2")
-		.text(`Channels by Main Topic — ${DEFAULT_YEAR}`)
+		.text(`Chart6: Channels by Main Topic — ${DEFAULT_YEAR}`)
 		.style("font-size", "24px")
 		.style("font-weight", 700)
 		.style("fill", "#3B118D")
@@ -180,7 +180,11 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 		.attr("class", "form-select")
 		.style("min-width", "140px");
 
-	mobileRow.append("button").attr("type", "submit").attr("class", "btn btn-primary").text("Update");
+	mobileRow
+		.append("button")
+		.attr("type", "submit")
+		.attr("class", "btn btn-primary ")
+		.text("Update");
 
 	// Desktop/tablet: number input + button
 	const desktopRow = form
@@ -203,7 +207,11 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 		.style("width", "140px")
 		.property("value", DEFAULT_YEAR);
 
-	desktopRow.append("button").attr("type", "submit").attr("class", "h_btn-primary").text("Update");
+	desktopRow
+		.append("button")
+		.attr("type", "submit")
+		.attr("class", "h_btn-primary h_btn_sm")
+		.text("Update");
 
 	// Chart container
 	const chartWrap = card.append("div").attr("class", "position-relative");
@@ -276,7 +284,7 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 		const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
 		const data = computeCountsForYear(year);
-		titleEl.text(`Channels by Main Topic — ${year}`);
+		titleEl.text(`Chart6: Channels by Main Topic — ${year}`);
 
 		if (!data.length) {
 			setStatus("error", `No data for ${year}`);
@@ -284,8 +292,9 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 				.attr("x", innerW / 2)
 				.attr("y", innerH / 2)
 				.attr("text-anchor", "middle")
-				.attr("class", "text-secondary")
-				.text(`No channels found for ${year}. Try another year.`);
+				//.attr("class", "bg-error")
+				.text(`No channels found for ${year}. Try another year.`)
+				.style("fill", "#E35858");
 			return;
 		}
 

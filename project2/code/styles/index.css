@@ -58,6 +58,9 @@ nav > ul > li:hover {
 	color: #3b118d;
 }
 
+body {
+	min-width: 650px;
+}
 main {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -124,4 +127,11 @@ textarea::placeholder {
 table thead.table-primary-header {
 	background-color: #3b118d !important;
 	color: white !important;
+}
+
+.gridBox {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 600px), 1fr));
+	gap: 1.5rem;
+	justify-items: center;
 }

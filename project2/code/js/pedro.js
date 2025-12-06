@@ -30,6 +30,10 @@ todo:each stack should show the value,refer to the ./assets/charts/6_channelsByM
 		width = 500;
 		height = 350;
 		margin.left = 180; // Reduce left margin for smaller screens
+	} else {
+		width = 1000;
+		height = 420;
+		margin.left = 120;
 	}
 
 	const innerW = width - margin.left - margin.right;
@@ -54,7 +58,7 @@ todo:each stack should show the value,refer to the ./assets/charts/6_channelsByM
 	d3.select(".pedroSvgContainer").style("background-color", "#F3F1FA");
 
 	// Title
-	svg
+	const titleText = svg
 		.append("text")
 		.attr("x", width / 2)
 		.attr("y", margin.top)
@@ -63,8 +67,17 @@ todo:each stack should show the value,refer to the ./assets/charts/6_channelsByM
 		.style("font-size", "24px")
 		.style("font-weight", 700)
 		.style("fill", PRIMARY)
-		.text("Chart5: Top 5 Channels — Quarterly Income");
+		.text("Chart5: Top 5 Channels - Quarterly Income");
 
+	function updateFontSize() {
+		if (window.innerWidth < 700) {
+			titleText.style("font-size", "18px");
+		} else {
+			titleText.style("font-size", "24px");
+		}
+	}
+	updateFontSize();
+	window.addEventListener("resize", updateFontSize);
 	// Selected Total badge (SVG)
 	const badge = svg.append("g").attr("transform", `translate(${width - 210}, ${margin.top + 20})`);
 	badge

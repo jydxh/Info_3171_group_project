@@ -67,11 +67,11 @@ svg
               Show top countries:
             </label>
             <select id="topSelect" style="color:#B35FA8; font-size:12px;">
+              <option value="3">Top 3</option>
               <option value="5">Top 5</option>
-              <option value="7">Top 7</option>
-              <option value="12" selected>Top 12</option>
-              <option value="15">Top 15</option>
-              <option value="20">Top 20</option>
+              <option value="7" selected>Top 7</option>
+              <option value="10">Top 10</option>
+              <option value="15">All</option>
             </select>
           </div>
         `);
@@ -156,6 +156,23 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 			.attr("fill", d => color(d.data.country))
 			.style("stroke-width", "2px");
 
+		//TOOLTIP
+		const tooltip1 = d3
+			.select("body")
+			.append("div")
+			.attr("id", "tooltip1")
+			.attr("class", "tooltip")
+			.style("opacity", 0)
+			.style("pointer-events", "none")
+			.style("font-family", "'Merriweather', serif")
+			.style("font-weight", "400")
+			.style("font-size", "12px")
+			.style("line-height", "18px")
+			.style("background", "#B35FA8")
+			.style("color", "#F3F1FA")
+			.style("border-radius", "8px")
+			.style("box-shadow", "2px 2px 6px rgba(0,0,0,0.3)");
+
 		// Fade animation
 
 		arcs.attr("opacity", 0).transition().duration(2000).attr("opacity", 1);
@@ -229,9 +246,24 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 			.enter()
 			.append("g")
 			.attr("class", "legend-item")
+			.style("cursor", "pointer")
 			.style("fill", "#8D1179")
 			.style("font-family", "'Merriweather', sans-serif")
-			.attr("transform", (d, i) => `translate(0, ${i * 25 + 20})`);
+			.attr("transform", (d, i) => `translate(0, ${i * 25 + 20})`)
+
+			.on("mouseover", function (event, d) {
+				tooltip1.style("opacity", 1).html(`
+						<strong>${d.country}</strong><br>
+						Total Views: ${d.count.toLocaleString()}<br>
+						${d.percentage}% of all views
+					`);
+			})
+			.on("mousemove", function (event) {
+				tooltip1.style("left", event.pageX + 10 + "px").style("top", event.pageY + 10 + "px");
+			})
+			.on("mouseout", function () {
+				tooltip1.style("opacity", 0);
+			});
 
 		legendItem
 			.append("circle")
@@ -366,6 +398,22 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 		.innerRadius(0) // ← PURE PIE
 		.outerRadius(radius7);
 
+	const tooltip7 = d3
+		.select("body")
+		.append("div")
+		.attr("id", "tooltip7")
+		.attr("class", "tooltip")
+		.style("opacity", 0)
+		.style("pointer-events", "none")
+		.style("font-family", "'Merriweather', serif")
+		.style("font-weight", "400")
+		.style("font-size", "12px")
+		.style("line-height", "18px")
+		.style("background", "#B35FA8")
+		.style("color", "#F3F1FA")
+		.style("border-radius", "8px")
+		.style("box-shadow", "2px 2px 6px rgba(0,0,0,0.3)");
+
 	const edgeArc7 = d3.arc().innerRadius(radius7).outerRadius(radius7);
 
 	const outerArc7 = d3
@@ -450,9 +498,24 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 		.enter()
 		.append("g")
 		.attr("class", "legend-item")
+		.style("cursor", "pointer")
 		.style("fill", "#8D1179")
 		.style("font-family", "'Merriweather', sans-serif")
-		.attr("transform", (d, i) => `translate(0, ${i * 25 + 20})`);
+		.attr("transform", (d, i) => `translate(0, ${i * 25 + 20})`)
+		// tooltip
+		.on("mouseover", function (event, d) {
+			tooltip7.style("opacity", 1).html(`
+					<strong>${d.category}</strong><br>
+					Total Views: ${d.totalViews.toLocaleString()}<br>
+					${d.percentage}% of all views
+				`);
+		})
+		.on("mousemove", function (event) {
+			tooltip7.style("left", event.pageX + 10 + "px").style("top", event.pageY + 10 + "px");
+		})
+		.on("mouseout", function () {
+			tooltip7.style("opacity", 0);
+		});
 
 	legendItem7
 		.append("circle")

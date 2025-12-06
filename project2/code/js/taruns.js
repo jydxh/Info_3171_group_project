@@ -199,16 +199,16 @@ const tarunFormatNum = d3.format(",");
 (function renderTarunChart4() {
 	const container = d3
 		.select("#Taruns_chart_4")
-		.style("width", "600px")
+		.style("width", "100%")
 		.style("max-width", "600px")
-		.attr("class", "shadow card rounded pt-4")
+		.attr("class", "shadow card rounded pt-4 d-block")
 		.style("background", "#f3f1fa");
 
 	if (container.empty()) return;
 
 	container.selectAll("*").remove();
 
-	const width = 590;
+	const width = 600;
 	const height = 500;
 	const margin = { top: 60, right: 40, bottom: 60, left: 80 };
 	const innerWidth = width - margin.left - margin.right;
@@ -233,7 +233,9 @@ const tarunFormatNum = d3.format(",");
 		.style("color", "#3b118d")
 		.style("font-family", "'Montserrat', sans-serif")
 		.style("font-size", "24px")
+		.style("text-align", "center")
 		.style("font-weight", 700)
+		.style("width", "100%")
 		.text("Chart4: Top 5 Monthly Average Views");
 
 	// Controls: checkboxes + switch
@@ -241,7 +243,11 @@ const tarunFormatNum = d3.format(",");
 		.append("div")
 		.attr("class", "d-flex flex-column flex-wrap align-items-start gap-4 mt-2");
 
-	const svg = container.append("svg").attr("width", width).attr("height", height);
+	const svg = container
+		.append("svg")
+		.attr("viewBox", `0 0 ${width} ${height}`)
+		.style("width", "100%")
+		.style("height", "auto");
 
 	const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -454,7 +460,7 @@ const tarunFormatNum = d3.format(",");
 			// Checkbox controls
 			const checkboxContainer = controls
 				.append("div")
-				.attr("class", "d-flex gap-2 align-items-center ");
+				.attr("class", "d-flex gap-2 align-items-center flex-wrap");
 
 			channelNames.forEach(name => {
 				const wrapper = checkboxContainer
@@ -489,7 +495,7 @@ const tarunFormatNum = d3.format(",");
 			// "Show all" switch
 			const switchWrapper = controls
 				.append("div")
-				.style("width", "400px")
+				.style("width", "auto")
 				.attr("class", "d-flex align-items-center gap-2 form-switch form-check");
 
 			const showAllSwitch = switchWrapper
