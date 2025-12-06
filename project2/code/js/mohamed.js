@@ -135,12 +135,22 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 	const titleWrap = header.append("div").attr("class", "me-2");
 	const titleEl = titleWrap
 		.append("h3")
-		.attr("class", "text-primary mb-1")
-		.text(`Channels by Main Topic — ${DEFAULT_YEAR}`);
+		.attr("class", "text-primary mb-2")
+		.text(`Channels by Main Topic — ${DEFAULT_YEAR}`)
+		.style("font-size", "24px")
+		.style("font-weight", 700)
+		.style("fill", "#3B118D")
+		.style("font-family", "'Montserrat', sans-serif");
+
+	//Subtext / Caption	Poppins	400	14px	20px
+
 	titleWrap
 		.append("p")
 		.attr("class", "text-secondary mb-0")
-		.text(`Top ${TOP_N} topics (count of channels)`);
+		.text(`Top ${TOP_N} topics (count of channels)`)
+		.style("font-size", "14px")
+		.style("font-weight", 400)
+		.style("font-family", "Poppins");
 
 	const statusWrap = header.append("div").attr("class", "d-flex align-items-center gap-2");
 	const statusEl = statusWrap
@@ -184,28 +194,36 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 		.append("input")
 		.attr("id", "mohamed_chart6_year_input")
 		.attr("type", "number")
-		.attr("class", "form-control")
+		//.attr("class", "form-control")
 		.attr("min", "1900")
 		.attr("max", "2100")
 		.attr("step", "1")
+		.attr("placeholder", "Enter number of year here")
 		.style("width", "140px")
 		.property("value", DEFAULT_YEAR);
 
-	desktopRow
-		.append("button")
-		.attr("type", "submit")
-		.attr("class", "btn btn-primary")
-		.text("Update");
+	desktopRow.append("button").attr("type", "submit").attr("class", "h_btn-primary").text("Update");
 
 	// Chart container
 	const chartWrap = card.append("div").attr("class", "position-relative");
 	const svg = chartWrap.append("svg").attr("class", "w-100");
 	const tooltip = chartWrap
 		.append("div")
-		.attr("class", "position-absolute p-2 rounded shadow bg-white")
-		.style("pointer-events", "none")
+		.attr("class", "tooltip")
 		.style("opacity", 0)
-		.style("font-size", "12px");
+		.style("pointer-events", "none")
+		.style("font-family", "'Merriweather', serif")
+		.style("font-weight", "400")
+		.style("font-size", "12px")
+		.style("line-height", "18px")
+		.style("background", "#B35FA8")
+		.style("color", "#F3F1FA")
+		.style("border-radius", "8px")
+		.style("box-shadow", "2px 2px 6px rgba(0,0,0,0.3)");
+	// .attr("class", "position-absolute p-2 rounded shadow bg-white")
+	// .style("pointer-events", "none")
+	// .style("opacity", 0)
+	// .style("font-size", "12px");
 
 	// ---------- CHART LOGIC ----------
 	let DATA = null;
@@ -279,7 +297,6 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 			.scalePoint()
 			.domain(
 				data.map(d => {
-					console.log(d);
 					return d.topic;
 				})
 			)
@@ -306,7 +323,34 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 		g.append("g")
 			.attr("class", "y-axis")
 			.call(yAxis)
-			.call(g => g.select(".domain").attr("stroke-opacity", 0.25));
+			.selectAll("text")
+			.style("fill", "#8d1179")
+			.style("font-size", "12px");
+		//.call(g => g.select(".domain").attr("stroke-opacity", 0.25));
+
+		// Y axis labels
+		svg
+			.append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("x", -height / 2 + 40)
+			.attr("y", margin.left - 40)
+			.style("text-anchor", "middle")
+			.style("font-family", "Merriweather")
+			.style("fill", "#3b118d")
+			.style("font-size", "16px")
+			.style("font-weight", 700)
+			.text("Number of Channels");
+		// X axis label
+		svg
+			.append("text")
+			.attr("x", width / 2)
+			.attr("y", height - margin.top)
+			.style("text-anchor", "middle")
+			.style("font-family", "Merriweather")
+			.style("fill", "#3b118d")
+			.style("font-size", "16px")
+			.style("font-weight", 700)
+			.text("Channel");
 
 		const gx = g
 			.append("g")
@@ -319,7 +363,9 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 			.style("text-anchor", "end")
 			.attr("dx", "-0.6em")
 			.attr("dy", "0.15em")
-			.attr("transform", "rotate(-25)");
+			.attr("transform", "rotate(-25)")
+			.style("fill", "#8d1179")
+			.style("font-size", "12px");
 
 		// Area + line generators
 		const area = d3
@@ -376,9 +422,7 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 					.style("left", `${mx + 12}px`)
 					.style("top", `${my + 12}px`)
 					.style("opacity", 1)
-					.html(
-						`<div class="fw-semibold">${d.topic}</div><div class="text-secondary">${d.count} channels</div>`
-					);
+					.html(`<div class="fw-semibold">${d.topic}</div><div>${d.count} channels</div>`);
 			})
 			.on("mouseleave", () => tooltip.style("opacity", 0));
 
@@ -395,13 +439,13 @@ use the d3.select("#Mohamed_chart_6") to select the dom placeholder
 			.text(d => d.count);
 
 		// Footnote
-		svg
-			.append("text")
-			.attr("x", margin.left)
-			.attr("y", height - 8)
-			.attr("class", "text-secondary")
-			.style("font-size", "11px")
-			.text(`Data: ${DATA_PATH.split("/").slice(-1)[0]} • Filter: year = ${year}`);
+		// svg
+		// 	.append("text")
+		// 	.attr("x", margin.left)
+		// 	.attr("y", height - 8)
+		// 	.attr("class", "text-secondary")
+		// 	.style("font-size", "11px")
+		// 	.text(`Data: ${DATA_PATH.split("/").slice(-1)[0]} • Filter: year = ${year}`);
 	}
 
 	function populateYearControls(years) {

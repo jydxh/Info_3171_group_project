@@ -4,19 +4,19 @@
 
 #Mohamed_chart_6 .mohamed-chart6-area {
 	/* Fills with currentColor but lightly; respects your theme */
-	fill: currentColor;
-	opacity: 0.18;
+	fill: #e3bfe0;
+	opacity: 0.5;
 }
 
 #Mohamed_chart_6 .mohamed-chart6-line {
 	fill: none;
-	stroke: currentColor;
+	stroke: #3b118d;
 	stroke-width: 2.5;
 	opacity: 0.9;
 }
 
 #Mohamed_chart_6 .mohamed-chart6-point {
-	fill: currentColor;
+	fill: #3b118d;
 	opacity: 0.95;
 }
 
