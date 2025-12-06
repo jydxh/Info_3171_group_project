@@ -56,7 +56,7 @@ const tarunFormatNum = d3.format(",");
 		.append("svg")
 		.attr("width", width)
 		.attr("height", height)
-		.attr("class", "shadow rounded");
+		.attr("class", "shadow card rounded");
 
 	//add title
 	svg
@@ -204,7 +204,7 @@ const tarunFormatNum = d3.format(",");
 		.select("#Taruns_chart_4")
 		.style("width", "600px")
 		.style("max-width", "600px")
-		.attr("class", "shadow rounded pt-4")
+		.attr("class", "shadow card rounded pt-4")
 		.style("background", "#f3f1fa");
 
 	if (container.empty()) return;

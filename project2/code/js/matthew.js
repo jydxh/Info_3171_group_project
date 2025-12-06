@@ -42,7 +42,7 @@ d3.csv("./data/top_100_youtubers.csv").then(function (data) {
 	const svg = d3
 		.select("#Matthew_chart_8")
 		.append("svg")
-		.attr("class", "matthewSvgContainer shadow rounded")
+		.attr("class", "matthewSvgContainer card shadow rounded")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
@@ -179,7 +179,7 @@ d3.csv("./data/top_100_youtubers.csv").then(function (data) {
 	const svg2 = d3
 		.select("#Matthew_chart_9")
 		.append("svg")
-		.attr("class", "matthewSvgContainer shadow rounded")
+		.attr("class", "matthewSvgContainer card shadow rounded")
 		.attr("width", width2 + margin2.left + margin2.right)
 		.attr("height", height2 + margin2.top + margin2.bottom)
 		.append("g")

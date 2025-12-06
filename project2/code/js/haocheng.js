@@ -129,7 +129,7 @@ container.selectAll("*").remove();
 
 const chart2_svg = container
 	.append("svg")
-	.attr("class", "haochengSvgContainer shadow rounded")
+	.attr("class", "haochengSvgContainer card shadow rounded")
 	.attr("width", width)
 	.attr("height", height);
 

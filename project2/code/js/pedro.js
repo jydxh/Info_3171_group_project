@@ -44,7 +44,7 @@ todo:each stack should show the value,refer to the ./assets/charts/6_channelsByM
 
 	const svg = container
 		.append("svg")
-		.attr("class", "pedroSvgContainer rounded shadow")
+		.attr("class", "pedroSvgContainer card rounded shadow")
 		.attr("width", width)
 		.attr("height", height)
 		.attr("viewBox", `0 0 ${width} ${height}`) // Add viewBox for scaling

@@ -1,0 +1,30 @@
+/* Chart 6 (Mohamed) — area chart styling
+   Keep this minimal; your team said shared UI classes live in ./styles/elements.css.
+*/
+
+#Mohamed_chart_6 .mohamed-chart6-area {
+	/* Fills with currentColor but lightly; respects your theme */
+	fill: currentColor;
+	opacity: 0.18;
+}
+
+#Mohamed_chart_6 .mohamed-chart6-line {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2.5;
+	opacity: 0.9;
+}
+
+#Mohamed_chart_6 .mohamed-chart6-point {
+	fill: currentColor;
+	opacity: 0.95;
+}
+
+#Mohamed_chart_6 .mohamed-chart6-point:hover {
+	opacity: 1;
+	r: 5;
+}
+
+#Mohamed_chart_6 .mohamed-chart6-grid line {
+	shape-rendering: crispEdges;
+}

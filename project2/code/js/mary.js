@@ -23,7 +23,7 @@ const width = 600,
 const container = d3.select("#Mary_chart_1");
 const svg = container
 	.append("svg")
-	.attr("class", "marySvgContainer shadow rounded")
+	.attr("class", "marySvgContainer card shadow rounded")
 	.attr("width", width)
 	.attr("height", height);
 
@@ -267,7 +267,7 @@ const width7 = 600,
 const container7 = d3.select("#Mary_chart_7");
 const svg7 = container7
 	.append("svg")
-	.attr("class", "marySvgContainer shadow rounded")
+	.attr("class", "marySvgContainer card shadow rounded")
 	.attr("width", width7)
 	.attr("height", height7);
 
