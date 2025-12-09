@@ -150,8 +150,19 @@ todo:each stack should show the value,refer to the ./assets/charts/6_channelsByM
 			d.ChannelName = d.ChannelName || d.username || "Unknown";
 			d.total = d.Q1 + d.Q2 + d.Q3 + d.Q4;
 		});
+		console.log("raw from pedro data:", raw);
 
 		currentData = raw.sort((a, b) => b.total - a.total).slice(0, 5);
+		//		console.log(currentData[0].total); //3209539.32
+		const highestRevenue = currentData[0].total;
+		// insert the height total income label
+
+		d3.select("#Mary_label_1").html(
+			`Highest revenue in a year:<br><span style="color: #8D1179;">${d3.format(".2s")(
+				highestRevenue.toFixed(0)
+			)}`
+		);
+
 		draw();
 		addBrush();
 	});

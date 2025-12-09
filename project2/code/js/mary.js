@@ -113,10 +113,11 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 	countryData.sort((a, b) => b.count - a.count);
 	const countryHasMostYouTubeChannel = countryData[0].country;
 
+	// load from the pedro.js
 	/* load the label */
-	d3.select("#Mary_label_1").html(
+	/* 	d3.select("#Mary_label_1").html(
 		`Country with the Highest Number of Channel:<br><span style="color: #8D1179;">${countryHasMostYouTubeChannel}`
-	);
+	); */
 
 	//COLOR SCALE
 	const color = d3
