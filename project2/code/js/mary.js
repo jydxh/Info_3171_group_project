@@ -174,6 +174,23 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 			.style("border-radius", "8px")
 			.style("box-shadow", "2px 2px 6px rgba(0,0,0,0.3)");
 
+		const countryNames = {
+			US: "USA",
+			IN: "India",
+			BR: "Brazil",
+			KR: "South Korea (Republic of Korea)",
+			CA: "Canada",
+			MX: "Mexico",
+			RU: "Russia (Russian Federation)",
+			SV: "El Salvador",
+			CL: "Chile",
+			NO: "Norway",
+			PR: "Puerto Rico",
+			BY: "Belarus",
+			PH: "Philippines",
+			TH: "Thailand",
+		};
+
 		// Fade animation
 
 		arcs.attr("opacity", 0).transition().duration(2000).attr("opacity", 1);
@@ -254,7 +271,7 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 
 			.on("mouseover", function (event, d) {
 				tooltip1.style("opacity", 1).html(`
-						<strong>${d.country}</strong><br>
+						<strong>${countryNames[d.country]}</strong><br>
 						Total Views: ${d.count.toLocaleString()}<br>
 						${d.percentage}% of all views
 					`);
