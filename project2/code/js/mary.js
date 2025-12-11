@@ -271,7 +271,7 @@ d3.csv("data/top_100_youtubers.csv").then(data => {
 
 			.on("mouseover", function (event, d) {
 				tooltip1.style("opacity", 1).html(`
-						<strong>${countryNames[d.country]}</strong><br>
+						<strong>${countryNames[d.country] || d.country}</strong><br>
 						Total Views: ${d.count.toLocaleString()}<br>
 						${d.percentage}% of all views
 					`);
